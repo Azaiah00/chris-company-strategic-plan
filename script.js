@@ -144,6 +144,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const ctxTime = document.getElementById('chart-time');
     if (ctxTime) {
+        // Create gradient for bars
+        const gradientManual = ctxTime.getContext('2d').createLinearGradient(0, 0, 0, 250);
+        gradientManual.addColorStop(0, chartColors.danger);
+        gradientManual.addColorStop(1, 'rgba(239, 68, 68, 0.7)');
+        
+        const gradientAI = ctxTime.getContext('2d').createLinearGradient(0, 0, 0, 250);
+        gradientAI.addColorStop(0, chartColors.orange);
+        gradientAI.addColorStop(1, 'rgba(255, 165, 0, 0.7)');
+        
         new Chart(ctxTime, {
             type: 'bar',
             data: {
@@ -151,16 +160,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 datasets: [{
                     label: 'Hours per Week',
                     data: [10, 1], // 10 hours manual vs 1 hour automated
-                    backgroundColor: [
-                        chartColors.danger,
-                        chartColors.success
-                    ],
-                    borderColor: [
-                        chartColors.danger,
-                        chartColors.success
-                    ],
-                    borderWidth: 2,
-                    borderRadius: 8
+                    backgroundColor: [gradientManual, gradientAI],
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    borderRadius: 12,
+                    barThickness: 60
                 }]
             },
             options: {
@@ -171,16 +175,32 @@ document.addEventListener('DOMContentLoaded', function() {
                         display: false
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        padding: 12,
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 39, 77, 0.95)',
+                        titleColor: chartColors.orange,
+                        bodyColor: '#FFFFFF',
+                        borderColor: chartColors.orange,
+                        borderWidth: 2,
+                        padding: 16,
                         titleFont: {
-                            size: 14,
-                            weight: 'bold'
+                            size: 16,
+                            weight: 'bold',
+                            family: 'Inter'
                         },
                         bodyFont: {
-                            size: 13
+                            size: 14,
+                            family: 'Inter'
                         },
-                        cornerRadius: 8
+                        cornerRadius: 12,
+                        displayColors: false,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return context.parsed.y + ' hours/week';
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -192,19 +212,25 @@ document.addEventListener('DOMContentLoaded', function() {
                                 return value + 'h';
                             },
                             font: {
-                                size: 11
-                            }
+                                size: 12,
+                                weight: '600',
+                                family: 'Inter'
+                            },
+                            color: chartColors.primary
                         },
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                            color: 'rgba(0, 119, 204, 0.1)',
+                            drawBorder: false
                         }
                     },
                     x: {
                         ticks: {
                             font: {
-                                size: 11,
-                                weight: 'bold'
-                            }
+                                size: 12,
+                                weight: 'bold',
+                                family: 'Inter'
+                            },
+                            color: chartColors.primary
                         },
                         grid: {
                             display: false
@@ -225,16 +251,19 @@ document.addEventListener('DOMContentLoaded', function() {
         new Chart(ctxCost, {
             type: 'doughnut',
             data: {
-                labels: ['Social Media Manager', 'AI Automation Service'],
+                labels: ['Social Media Manager', 'AI Automation'],
                 datasets: [{
                     label: 'Monthly Cost',
                     data: [3500, 899], // Social media manager vs automation service cost
                     backgroundColor: [
-                        chartColors.danger,
-                        chartColors.accent
+                        chartColors.primary,
+                        chartColors.orange
                     ],
                     borderColor: '#FFFFFF',
-                    borderWidth: 3
+                    borderWidth: 4,
+                    hoverOffset: 15,
+                    hoverBorderColor: chartColors.secondary,
+                    hoverBorderWidth: 5
                 }]
             },
             options: {
@@ -244,32 +273,63 @@ document.addEventListener('DOMContentLoaded', function() {
                     legend: {
                         position: 'bottom',
                         labels: {
-                            padding: 15,
+                            padding: 18,
                             font: {
-                                size: 11
+                                size: 12,
+                                weight: '600',
+                                family: 'Inter'
                             },
-                            usePointStyle: true
+                            color: chartColors.primary,
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            boxWidth: 10,
+                            boxHeight: 10
                         }
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        padding: 12,
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 39, 77, 0.95)',
+                        titleColor: chartColors.orange,
+                        bodyColor: '#FFFFFF',
+                        borderColor: chartColors.orange,
+                        borderWidth: 2,
+                        padding: 18,
                         titleFont: {
-                            size: 14,
-                            weight: 'bold'
+                            size: 16,
+                            weight: 'bold',
+                            family: 'Inter'
                         },
                         bodyFont: {
-                            size: 13
+                            size: 15,
+                            family: 'Inter'
                         },
-                        cornerRadius: 8,
+                        cornerRadius: 12,
+                        displayColors: false,
                         callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
                             label: function(context) {
-                                return context.label + ': $' + context.parsed.toLocaleString();
+                                const value = '$' + context.parsed.toLocaleString();
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((context.parsed / total) * 100);
+                                return value + '/month (' + percentage + '%)';
+                            },
+                            afterLabel: function(context) {
+                                if (context.dataIndex === 1) {
+                                    const savings = 3500 - 899;
+                                    return '\n💰 Save $' + savings.toLocaleString() + '/month';
+                                }
+                                return '';
                             }
                         }
                     }
                 },
-                cutout: '65%'
+                cutout: '70%',
+                animation: {
+                    animateRotate: true,
+                    animateScale: true
+                }
             }
         });
     }
@@ -292,37 +352,64 @@ document.addEventListener('DOMContentLoaded', function() {
                     data: [50, 75, 110, 165, 245, 360], // Exponential growth trajectory
                     borderColor: chartColors.orange,
                     backgroundColor: gradient,
-                    borderWidth: 3,
+                    borderWidth: 4,
                     fill: true,
                     tension: 0.4, // Smooth curve
                     pointBackgroundColor: chartColors.orange,
                     pointBorderColor: '#FFFFFF',
-                    pointBorderWidth: 2,
-                    pointRadius: 5,
-                    pointHoverRadius: 7
+                    pointBorderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 10,
+                    pointHoverBackgroundColor: chartColors.orange,
+                    pointHoverBorderColor: chartColors.secondary,
+                    pointHoverBorderWidth: 3
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
                 plugins: {
                     legend: {
                         display: false
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        padding: 12,
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 39, 77, 0.95)',
+                        titleColor: chartColors.orange,
+                        bodyColor: '#FFFFFF',
+                        borderColor: chartColors.orange,
+                        borderWidth: 2,
+                        padding: 18,
                         titleFont: {
-                            size: 14,
-                            weight: 'bold'
+                            size: 16,
+                            weight: 'bold',
+                            family: 'Inter'
                         },
                         bodyFont: {
-                            size: 13
+                            size: 15,
+                            family: 'Inter'
                         },
-                        cornerRadius: 8,
+                        cornerRadius: 12,
+                        displayColors: false,
                         callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
                             label: function(context) {
-                                return 'Leads: ' + context.parsed.y;
+                                return context.parsed.y + ' leads generated';
+                            },
+                            afterLabel: function(context) {
+                                if (context.dataIndex > 0) {
+                                    const prev = context.dataset.data[context.dataIndex - 1];
+                                    const current = context.parsed.y;
+                                    const growth = ((current - prev) / prev * 100).toFixed(0);
+                                    return '\n📈 +' + growth + '% growth';
+                                }
+                                return '';
                             }
                         }
                     }
@@ -332,18 +419,28 @@ document.addEventListener('DOMContentLoaded', function() {
                         beginAtZero: true,
                         ticks: {
                             font: {
-                                size: 11
+                                size: 12,
+                                weight: '600',
+                                family: 'Inter'
+                            },
+                            color: chartColors.primary,
+                            callback: function(value) {
+                                return value;
                             }
                         },
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                            color: 'rgba(0, 119, 204, 0.1)',
+                            drawBorder: false
                         }
                     },
                     x: {
                         ticks: {
                             font: {
-                                size: 10
-                            }
+                                size: 11,
+                                weight: '600',
+                                family: 'Inter'
+                            },
+                            color: chartColors.primary
                         },
                         grid: {
                             display: false
