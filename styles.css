@@ -143,9 +143,9 @@ body {
     width: 18px;
     height: 20px;
     position: relative;
-    border: 2px solid var(--secondary-blue);
+    border: 2px solid #16A34A;
     border-radius: 2px;
-    background: linear-gradient(90deg, rgba(0, 119, 204, 0.2) 50%, transparent 50%);
+    background: linear-gradient(90deg, rgba(22, 163, 74, 0.2) 50%, transparent 50%);
 }
 
 .icon-education::after {
@@ -156,7 +156,7 @@ body {
     transform: translateX(-50%);
     width: 14px;
     height: 4px;
-    background: var(--secondary-blue);
+    background: #16A34A;
     border-radius: 2px 2px 0 0;
 }
 
@@ -448,7 +448,7 @@ body {
 
 /* Enrichment brand accent with animated gradient */
 .enrichment-brand::before {
-    background: linear-gradient(90deg, var(--accent-cyan), var(--secondary-blue), var(--accent-orange));
+    background: linear-gradient(90deg, #16A34A, var(--secondary-blue), var(--accent-orange));
     background-size: 200% 100%;
     animation: gradientSlide 8s ease infinite;
 }
