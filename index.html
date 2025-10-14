@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Automation Blueprint | Focus Brands</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-inter">
+    
+    <!-- Sticky Navigation Header -->
+    <nav id="navbar" class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-primary-blue">Focus Brands</h1>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#overview" class="nav-link">The Hook</a>
+                    <a href="#brands" class="nav-link">Brands</a>
+                    <a href="#solution" class="nav-link">Solution</a>
+                    <a href="#impact" class="nav-link">Impact</a>
+                    <a href="#future" class="nav-link">Future</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary-blue hover:text-secondary-blue transition-colors">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#overview" class="mobile-nav-link">The Hook</a>
+                <a href="#brands" class="mobile-nav-link">Brands</a>
+                <a href="#solution" class="mobile-nav-link">Solution</a>
+                <a href="#impact" class="mobile-nav-link">Impact</a>
+                <a href="#future" class="mobile-nav-link">Future</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Section 1: The Hook -->
+        <section id="overview" class="section-container py-20 md:py-32 bg-gradient-to-br from-primary-blue to-secondary-blue text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <!-- Animated Headline -->
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight fade-in-up">
+                    Reclaim Your Time.<br>
+                    <span class="text-accent-cyan">Hands-Off Growth.</span>
+                </h2>
+                
+                <!-- Key Metric with Animation -->
+                <div class="metric-container my-12 fade-in-up delay-200">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-8 md:p-12 inline-block border-4 border-accent-cyan shadow-2xl pulse-glow">
+                        <p class="text-xl md:text-2xl font-medium mb-4 text-accent-cyan">Time Spent on Manual Content Creation</p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <span id="hours-saved" class="text-8xl md:text-9xl font-black counter-number">10</span>
+                            <span class="text-5xl md:text-6xl font-bold">+</span>
+                        </div>
+                        <p class="text-3xl md:text-4xl font-bold mt-4">Hours Per Week</p>
+                        <div class="mt-6 pt-6 border-t border-white border-opacity-30">
+                            <p class="text-lg md:text-xl font-semibold text-accent-cyan">Automated to Just 1 Hour</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compelling Copy -->
+                <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto leading-relaxed fade-in-up delay-400">
+                    Say goodbye to endless hours of content creation. Our AI-powered automation handles your social media, highlights, and customer service—while you focus on growing your business.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Brand Insight -->
+        <section id="brands" class="section-container py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-blue mb-4">Your Brands, Understood</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Two distinct identities, one seamless automation strategy.</p>
+                </div>
+                
+                <!-- Brand Cards Grid -->
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    
+                    <!-- Focus Sports VA Card -->
+                    <div class="brand-card sports-brand fade-in-left">
+                        <div class="p-8 md:p-10 h-full flex flex-col">
+                            <!-- Brand Icon/Badge -->
+                            <div class="mb-6">
+                                <div class="inline-block bg-gradient-to-br from-primary-blue to-secondary-blue text-white px-6 py-3 rounded-full font-bold text-lg flex items-center">
+                                    <span class="icon-sports mr-2"></span>
+                                    Focus Sports VA
+                                </div>
+                            </div>
+                            
+                            <!-- Brand Description -->
+                            <h3 class="text-3xl font-bold text-primary-blue mb-4">High-Energy. Competitive. Dynamic.</h3>
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6 flex-grow">
+                                Fast-paced sports content that captures the thrill of competition. From game highlights to player spotlights, we deliver content that energizes your audience and builds championship-level engagement.
+                            </p>
+                            
+                            <!-- Key Features -->
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <span class="text-secondary-blue mr-3 text-xl">▶</span>
+                                    <span class="text-gray-700">Automated game highlight reels</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-secondary-blue mr-3 text-xl">▶</span>
+                                    <span class="text-gray-700">Automated social media posting</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-secondary-blue mr-3 text-xl">▶</span>
+                                    <span class="text-gray-700">Player and team content generation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Focus Enrichment Card -->
+                    <div class="brand-card enrichment-brand fade-in-right">
+                        <div class="p-8 md:p-10 h-full flex flex-col">
+                            <!-- Brand Icon/Badge -->
+                            <div class="mb-6">
+                                <div class="inline-block bg-gradient-to-br from-accent-cyan to-secondary-blue text-white px-6 py-3 rounded-full font-bold text-lg flex items-center">
+                                    <span class="icon-education mr-2"></span>
+                                    Focus Enrichment
+                                </div>
+                            </div>
+                            
+                            <!-- Brand Description -->
+                            <h3 class="text-3xl font-bold text-primary-blue mb-4">Educational. Developmental. Inspiring.</h3>
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6 flex-grow">
+                                Thoughtful educational content that nurtures growth and development. From program highlights to success stories, we create content that resonates with families and builds lasting trust.
+                            </p>
+                            
+                            <!-- Key Features -->
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <span class="text-accent-cyan mr-3 text-xl">▶</span>
+                                    <span class="text-gray-700">Educational content automation</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-accent-cyan mr-3 text-xl">▶</span>
+                                    <span class="text-gray-700">Program showcase and testimonials</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-accent-cyan mr-3 text-xl">▶</span>
+                                    <span class="text-gray-700">Family engagement communications</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Interactive Solution Flow -->
+        <section id="solution" class="section-container py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-blue mb-4">The Solution in Action</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Explore our AI-powered automation workflows designed specifically for your needs.</p>
+                </div>
+                
+                <!-- Toggle/Tab UI -->
+                <div class="flex justify-center mb-12 fade-in-up">
+                    <div class="inline-flex bg-white rounded-full p-2 shadow-lg border-2 border-primary-blue">
+                        <button id="tab-content" class="tab-button active px-6 md:px-8 py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300">
+                            AI Content Automation Engine
+                        </button>
+                        <button id="tab-highlights" class="tab-button px-6 md:px-8 py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300">
+                            AI Sports Highlight Generator
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Workflow Visualization Container -->
+                <div id="workflow-container" class="relative">
+                    
+                    <!-- Content Automation Workflow -->
+                    <div id="workflow-content" class="workflow-panel active">
+                        <div class="max-w-5xl mx-auto">
+                            <h3 class="text-3xl font-bold text-center text-primary-blue mb-12">AI Content Automation Engine</h3>
+                            
+                            <!-- Workflow Steps -->
+                            <div class="space-y-6">
+                                <!-- Step 1 -->
+                                <div class="workflow-step">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-4 md:mr-6">
+                                            1
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="text-xl md:text-2xl font-bold text-primary-blue mb-2">Content Strategy Input</h4>
+                                            <p class="text-gray-700 text-lg">Define your brand voice, themes, and posting schedule once. The AI learns your style.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Arrow -->
+                                <div class="flex justify-center">
+                                    <div class="text-secondary-blue text-4xl">↓</div>
+                                </div>
+                                
+                                <!-- Step 2 -->
+                                <div class="workflow-step">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-secondary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-4 md:mr-6">
+                                            2
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="text-xl md:text-2xl font-bold text-primary-blue mb-2">AI Content Generation</h4>
+                                            <p class="text-gray-700 text-lg">N8N workflows powered by advanced AI create engaging posts, captions, and visuals tailored to each brand.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Arrow -->
+                                <div class="flex justify-center">
+                                    <div class="text-secondary-blue text-4xl">↓</div>
+                                </div>
+                                
+                                <!-- Step 3 -->
+                                <div class="workflow-step">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-accent-cyan text-white rounded-full flex items-center justify-center font-bold text-xl mr-4 md:mr-6">
+                                            3
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="text-xl md:text-2xl font-bold text-primary-blue mb-2">Automated Multi-Platform Posting</h4>
+                                            <p class="text-gray-700 text-lg">Content automatically publishes to Instagram, Facebook, Twitter, and LinkedIn at optimal engagement times.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Highlights Generator Workflow -->
+                    <div id="workflow-highlights" class="workflow-panel">
+                        <div class="max-w-5xl mx-auto">
+                            <h3 class="text-3xl font-bold text-center text-primary-blue mb-12">AI Sports Highlight Generator</h3>
+                            
+                            <!-- Workflow Steps -->
+                            <div class="space-y-6">
+                                <!-- Step 1 -->
+                                <div class="workflow-step">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-4 md:mr-6">
+                                            1
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="text-xl md:text-2xl font-bold text-primary-blue mb-2">Upload Game Film</h4>
+                                            <p class="text-gray-700 text-lg">Simply upload raw game footage to the cloud storage system. No manual editing required.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Arrow -->
+                                <div class="flex justify-center">
+                                    <div class="text-secondary-blue text-4xl">↓</div>
+                                </div>
+                                
+                                <!-- Step 2 -->
+                                <div class="workflow-step">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-secondary-blue text-white rounded-full flex items-center justify-center font-bold text-xl mr-4 md:mr-6">
+                                            2
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="text-xl md:text-2xl font-bold text-primary-blue mb-2">AI Scene Detection & Analysis</h4>
+                                            <p class="text-gray-700 text-lg">Advanced computer vision identifies key moments: goals, amazing plays, celebrations, and pivotal game-changing scenes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Arrow -->
+                                <div class="flex justify-center">
+                                    <div class="text-secondary-blue text-4xl">↓</div>
+                                </div>
+                                
+                                <!-- Step 3 -->
+                                <div class="workflow-step">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-accent-cyan text-white rounded-full flex items-center justify-center font-bold text-xl mr-4 md:mr-6">
+                                            3
+                                        </div>
+                                        <div class="flex-grow">
+                                            <h4 class="text-xl md:text-2xl font-bold text-primary-blue mb-2">Automated Video Editing & Export</h4>
+                                            <p class="text-gray-700 text-lg">The AI assembles a professional highlight reel with transitions, music, and branding—ready to share in minutes, not hours.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Impact & ROI Dashboard -->
+        <section id="impact" class="section-container py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-blue mb-4">Measurable Impact</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Data-driven results that transform your business operations.</p>
+                </div>
+                
+                <!-- Charts Grid -->
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+                    
+                    <!-- Chart A: Time Reclaimed (Bar Chart) -->
+                    <div class="chart-card fade-in-up">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary-blue mb-4 text-center">Time Reclaimed</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-time"></canvas>
+                            </div>
+                            <p class="text-center text-gray-600 mt-4 text-sm">90% reduction in manual work</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart B: Cost Efficiency (Donut Chart) -->
+                    <div class="chart-card fade-in-up delay-200">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary-blue mb-4 text-center">Cost Efficiency</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-cost"></canvas>
+                            </div>
+                            <p class="text-center text-gray-600 mt-4 text-sm">Save thousands annually</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart C: Lead Growth (Line Chart) -->
+                    <div class="chart-card fade-in-up delay-400">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary-blue mb-4 text-center">Projected Lead Growth</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="chart-leads"></canvas>
+                            </div>
+                            <p class="text-center text-gray-600 mt-4 text-sm">Exponential ROI trajectory</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Summary Stats -->
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 fade-in-up">
+                    <div class="text-center p-6 bg-gradient-to-br from-primary-blue to-secondary-blue text-white rounded-2xl">
+                        <div class="text-4xl font-black mb-2">90%</div>
+                        <div class="text-sm font-medium">Time Saved</div>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-secondary-blue to-accent-cyan text-white rounded-2xl">
+                        <div class="text-4xl font-black mb-2">75%</div>
+                        <div class="text-sm font-medium">Cost Reduction</div>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-accent-cyan to-secondary-blue text-white rounded-2xl">
+                        <div class="text-4xl font-black mb-2">3x</div>
+                        <div class="text-sm font-medium">Lead Growth</div>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-primary-blue to-accent-cyan text-white rounded-2xl">
+                        <div class="text-4xl font-black mb-2">24/7</div>
+                        <div class="text-sm font-medium">Automation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Expanding the Playbook -->
+        <section id="future" class="section-container py-20 bg-gradient-to-br from-primary-blue to-secondary-blue text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Expanding the Playbook</h2>
+                    <p class="text-xl max-w-2xl mx-auto text-blue-100">Four powerful automation opportunities to scale your business even further.</p>
+                </div>
+                
+                <!-- Expansion Cards Grid -->
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                    
+                    <!-- Card 1: Customer Service AI Voice Agent -->
+                    <div class="expansion-card" data-card="1">
+                        <div class="expansion-header">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-bold flex items-center">
+                                    <span class="icon-voice mr-3"></span>
+                                    Customer Service AI Voice Agent
+                                </h3>
+                                <span class="expand-icon text-3xl">+</span>
+                            </div>
+                        </div>
+                        <div class="expansion-content">
+                            <p class="text-lg leading-relaxed">
+                                Transform your customer service with an intelligent AI Voice Agent that handles inquiries 24/7. This cutting-edge system answers common questions, schedules appointments, and provides personalized support—all with natural, human-like conversation. Free up your team to focus on high-value interactions while the AI handles routine requests instantly, improving customer satisfaction and reducing response times to zero.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Review Management Automation -->
+                    <div class="expansion-card" data-card="2">
+                        <div class="expansion-header">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-bold flex items-center">
+                                    <span class="icon-star mr-3"></span>
+                                    Review Management Automation
+                                </h3>
+                                <span class="expand-icon text-3xl">+</span>
+                            </div>
+                        </div>
+                        <div class="expansion-content">
+                            <p class="text-lg leading-relaxed">
+                                Never miss a review again. Our AI monitors all major review platforms, alerts you to new feedback in real-time, and even drafts personalized response suggestions. Positive reviews are automatically shared as social proof content, while negative reviews are flagged for immediate attention. Build a stellar online reputation without the constant monitoring hassle.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: Email Marketing Automation -->
+                    <div class="expansion-card" data-card="3">
+                        <div class="expansion-header">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-bold flex items-center">
+                                    <span class="icon-email mr-3"></span>
+                                    Smart Email Campaign Engine
+                                </h3>
+                                <span class="expand-icon text-3xl">+</span>
+                            </div>
+                        </div>
+                        <div class="expansion-content">
+                            <p class="text-lg leading-relaxed">
+                                Launch sophisticated email campaigns without the complexity. Our AI creates personalized email sequences, segments your audience based on behavior, and optimizes send times for maximum engagement. From welcome series to re-engagement campaigns, every email is tailored to drive conversions and nurture relationships automatically.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4: Lead Qualification & Nurturing -->
+                    <div class="expansion-card" data-card="4">
+                        <div class="expansion-header">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl font-bold flex items-center">
+                                    <span class="icon-target mr-3"></span>
+                                    Intelligent Lead Nurturing
+                                </h3>
+                                <span class="expand-icon text-3xl">+</span>
+                            </div>
+                        </div>
+                        <div class="expansion-content">
+                            <p class="text-lg leading-relaxed">
+                                Turn more prospects into customers with AI-powered lead qualification. The system scores leads based on engagement, automatically assigns them to the right nurture sequences, and alerts your sales team only when prospects are hot and ready to convert. No more chasing cold leads—focus your energy where it matters most.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="mt-16 text-center fade-in-up">
+                    <div class="inline-block bg-white bg-opacity-10 backdrop-blur-md rounded-2xl p-8 md:p-12 border-2 border-accent-cyan">
+                        <p class="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Business?</p>
+                        <p class="text-3xl md:text-4xl lg:text-5xl font-black text-accent-cyan leading-tight">
+                            Let's Build Your Automation Future
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg font-semibold mb-2">Focus Brands AI Automation</p>
+            <p class="text-gray-400">Presented by DataIsData</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
