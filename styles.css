@@ -143,9 +143,9 @@ body {
     width: 18px;
     height: 20px;
     position: relative;
-    border: 2px solid white;
+    border: 2px solid var(--secondary-blue);
     border-radius: 2px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 50%, transparent 50%);
+    background: linear-gradient(90deg, rgba(0, 119, 204, 0.2) 50%, transparent 50%);
 }
 
 .icon-education::after {
@@ -156,7 +156,7 @@ body {
     transform: translateX(-50%);
     width: 14px;
     height: 4px;
-    background: white;
+    background: var(--secondary-blue);
     border-radius: 2px 2px 0 0;
 }
 
